@@ -1,8 +1,10 @@
 import React, { ReactElement } from 'react'
 import Card from './IndicatorCard'
 import { CovidData } from '../interfaces/CovidData';
-import Accordion from '../components/Accordion'
+import Accordion from './accordion/Accordion'
 import InfectedByRegion from './InfectedByRegion';
+import { AccordionProvider } from '../context/useAccordion';
+import AccordionContainer from './accordion/AccordionContainer';
 
 interface Props {
     data: CovidData
@@ -42,9 +44,7 @@ export default function CardContainer({ data }: Props): ReactElement {
                 })}
 
             </article>
-            <Accordion>
-                <InfectedByRegion />
-            </Accordion>
+            <AccordionContainer />
         </>
     )
 }
