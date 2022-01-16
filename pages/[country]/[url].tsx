@@ -4,6 +4,7 @@ import Dataset from '../../components/Dataset'
 import { CovidData } from '../../interfaces/CovidData'
 import { CountryCovidData } from '../../interfaces/CountryCovidData'
 import { ParsedUrlQuery } from 'querystring'
+import { ModalProvider } from '../../context/useModal'
 
 interface Props {
     data: CovidData,
@@ -40,9 +41,10 @@ export async function getStaticPaths<getStaticPaths>() {
 
 export async function getStaticProps<GetStaticProps>({ params }: ParsedUrlQuery) {
     const { country, url }: any = params;
-    console.log(country, url);
     const data: Response = await fetch(`https://api.apify.com/v2/key-value-stores/${url}/records/LATEST?disableRedirect=true`);
     const res: CovidData = await data.json();
+
+    console.log('Building slug: ', country, " ", url)
 
     if (res.error) {
         return {
@@ -65,8 +67,9 @@ const Home: NextPage<Props> = ({ data, countryName }: Props) => {
             <Head>
                 <title>{countryName}&apos;s Covid Data</title>
             </Head>
-
-            <Dataset data={data} countryName={countryName} />
+            <ModalProvider>
+                <Dataset data={data} countryName={countryName} />
+            </ModalProvider>
         </div>
     )
 }

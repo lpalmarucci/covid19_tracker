@@ -7,6 +7,20 @@ module.exports = {
     extend: {
       rotate: {
         '135': '135deg'
+      },
+      animation: {
+        'slideUp': 'slideUp .5s linear forwards',
+        'slideDown': 'slideDown .5s linear forwards'
+      },
+      keyframes: {
+        slideUp: {
+          '0%': { transform: 'translate(-50%,-30%)', opacity: '0' },
+          '100%': { transform: 'translate(-50%,-50%)', opacity: '1' }
+        },
+        slideDown: {
+          '0%': { transform: 'translate(-50%,-50%)', opacity: '1' },
+          '100%': { transform: 'translate(-50%,-30%)', opacity: '0' }
+        }
       }
     },
   },

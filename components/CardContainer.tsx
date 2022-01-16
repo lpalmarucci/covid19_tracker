@@ -1,14 +1,12 @@
 import React, { ReactElement } from 'react'
+import ReactDOM from 'react-dom'
 import Card from './IndicatorCard'
 import { CovidData } from '../interfaces/CovidData';
-import Accordion from './accordion/Accordion'
-import InfectedByRegion from './InfectedByRegion';
-import { AccordionProvider } from '../context/useAccordion';
 import AccordionContainer from './accordion/AccordionContainer';
+import Modal from '../components/Modal'
+import { ModalProvider, useModal } from '../context/useModal';
+import Portal from './Portal';
 
-interface Props {
-    data: CovidData
-}
 
 const keysToObserve: object[] = [
     { 'newPositive': 'Nuovi positivi' },
@@ -30,21 +28,42 @@ const keysToObserve: object[] = [
     { 'dailyConfirmed': 'Nuovi contagi confermati' },
 ]
 
+const regionKeys: object[] = [
+    { 'locations': 'Regione' },
+    { 'casesByState': 'Casi per stato' },
+    { 'infectedByRegion': 'Casi per regione' }
+]
+
+export interface Props {
+
+    data: CovidData | any
+}
 export default function CardContainer({ data }: Props): ReactElement {
 
-    console.log('data', data);
+    const { isOpen: isModalOpen } = useModal();
+
+    let keyToShowPerRegion: string = "";
+    regionKeys.forEach((regionKey) => {
+        const key = Object.keys(regionKey)[0];
+        if (key in data && data[key]) {
+            keyToShowPerRegion = key;
+        }
+    });
 
     return (
-        <>
+        <div>
             <article className="flex gap-6 justify-center flex-wrap lg:flex-nowrap my-20 mt-10 mx-auto w-full p-10 dark:bg-gray-800 dark:text-white text-center md:grid md:grid-cols-2">
-                {keysToObserve.map((field: object, idx: number) => {
+                {keysToObserve.map((field: any, idx: number) => {
                     const key: string = Object.keys(field)[0];
-                    if (key in data) return <Card key={idx} title={field[key]} value={data[key]} />
-
+                    if (key in data && data[key]) return <Card key={idx} title={field[key]} value={data[key]} />
                 })}
-
             </article>
-            <AccordionContainer />
-        </>
+            {keyToShowPerRegion != "" && <AccordionContainer dataByRegion={data[keyToShowPerRegion]} />}
+
+            {isModalOpen &&
+                <Portal>
+                    <Modal />
+                </Portal>}
+        </div>
     )
 }
