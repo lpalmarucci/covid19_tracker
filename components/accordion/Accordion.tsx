@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react'
+import React, { JSXElementConstructor, ReactElement, ReactNode } from 'react'
 import { useAccordion } from '../../context/useAccordion';
 import AccordionHeader from './AccordionHeader';
 
 interface Props {
-    children: ReactElement
+    children: ReactNode
 }
 
 export default function Accordion({ children }: Props): ReactElement {
@@ -21,9 +21,9 @@ export default function Accordion({ children }: Props): ReactElement {
     }
 
     return (
-        <div className="w-full mx-auto px-10" onClick={openCloseAccordion}>
+        <div className="w-full mx-auto px-10" >
             <div className="container bg-white border border-gray-200 rounded-lg cursor-pointer" >
-                <AccordionHeader />
+                <AccordionHeader handleClick={openCloseAccordion} />
                 <div
                     className='transition-[max-height] duration-500 max-h-0 overflow-auto'
                     aria-labelledby="headingOne"
