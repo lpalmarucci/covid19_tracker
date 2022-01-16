@@ -16,8 +16,6 @@ export async function getServerSideProps<GetServerSideProps>() {
   const data = await fetch('https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true');
   const res: CountryCovidData | CountryCovidData[] | any = await data.json();
 
-  // console.log(res);
-
   if (res.error) {
     return {
       notFound: true
