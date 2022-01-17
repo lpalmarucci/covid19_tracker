@@ -15,6 +15,7 @@ interface ModalProviderInterface {
 
 const defaultValue = {
     isOpen: false,
+    setIsOpen: () => { },
     data: {
         region: '',
         name: '',
@@ -24,10 +25,11 @@ const defaultValue = {
         recovered: '0',
         deceased: '0',
         active: '0'
-    }
+    },
+    setData: () => { }
 }
 
-export const ModalContext = React.createContext<ModalContextInterface | null>(null);
+export const ModalContext = React.createContext<ModalContextInterface>(defaultValue);
 
 export const useModal = () => React.useContext(ModalContext);
 
