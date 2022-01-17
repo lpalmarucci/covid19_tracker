@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react'
+import { CovidData } from '../interfaces/CovidData'
 import { CovidDataByRegion } from '../interfaces/CovidDataByRegion'
 
 interface ModalContextInterface {
@@ -14,7 +15,6 @@ interface ModalProviderInterface {
 
 const defaultValue = {
     isOpen: false,
-    setIsOpen: () => { },
     data: {
         region: '',
         name: '',
@@ -24,18 +24,17 @@ const defaultValue = {
         recovered: '0',
         deceased: '0',
         active: '0'
-    },
-    setData: () => { }
+    }
 }
 
-export const ModalContext = React.createContext<ModalContextInterface>(defaultValue);
+export const ModalContext = React.createContext<ModalContextInterface | null>(null);
 
-export const useModal = () => React.useContext<ModalContextInterface>(ModalContext);
+export const useModal = () => React.useContext(ModalContext);
 
 export const ModalProvider = ({ children }: ModalProviderInterface): ReactElement => {
 
-    const [isOpen, setIsOpen] = React.useState(false);
-    const [data, setData] = React.useState(defaultValue.data);
+    const [isOpen, setIsOpen] = React.useState<boolean>(false);
+    const [data, setData] = React.useState<CovidDataByRegion>(defaultValue.data);
 
     return (
         <ModalContext.Provider value={{ isOpen, setIsOpen, data, setData }}>
