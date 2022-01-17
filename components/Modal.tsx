@@ -37,28 +37,30 @@ export default function Modal({ }: Props): ReactElement {
     }
 
     return (
-        <div id="modal" className='fixed top-2/4 left-2/4 w-full h-auto sm:min-w-min lg:w-2/4 border-gray-1 rounded-xl bg-gray-100 p-14 text-center text-xl duration-500 animate-slideUp'>
-            <h2 className="font-bold text-3xl" > {data.region || data.name}</h2>
-            <table className="text-center w-full mx-auto mt-10 border">
-                <thead className="text-md font-bold italic">
-                    <tr>
-                        {Object.keys(data).map((field: string, idx: number) => {
-                            if (keyToSkip.find(key => key === field)) return;
-                            return <td className="p-5 border" key={idx}>{field}</td>
-                        })}
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        {Object.entries(data).map(([field, value], idx) => {
-                            if (keyToSkip.find(key => key === field)) return;
-                            return <td key={idx} className="p-5 border">
-                                {value}
-                            </td>
-                        })}
-                    </tr>
-                </tbody>
-            </table>
+        <div id="modal" className='fixed top-2/4 left-2/4 min-w-min h-auto sm:w-2/4 lg:max-w-fit  border-gray-1 rounded-xl bg-gray-100 p-5 text-center text-xl duration-500 animate-slideUp'>
+            <div className='m-10'>
+                <h2 className="font-bold text-3xl" > {data.region || data.name}</h2>
+                <table className="text-center w-full mx-auto mt-10 border">
+                    <thead className="text-md font-bold italic">
+                        <tr>
+                            {Object.keys(data).map((field: string, idx: number) => {
+                                if (keyToSkip.find(key => key === field)) return;
+                                return <td className="p-5 border" key={idx}>{field}</td>
+                            })}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {Object.entries(data).map(([field, value], idx) => {
+                                if (keyToSkip.find(key => key === field)) return;
+                                return <td key={idx} className="p-5 border">
+                                    {value}
+                                </td>
+                            })}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }
