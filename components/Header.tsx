@@ -19,8 +19,6 @@ export default function Header({ drawSearchbar }: Props): ReactElement {
         }
     }
 
-    console.log(menuItemsRef.current);
-
     return (
         <nav className={`w-full bg-white shadow dark:bg-gray-800 border border-gray-200 dark:border-gray-500`}>
             <div className={`container px-6 py-3 mx-auto md:flex justify-between`}>
