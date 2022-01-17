@@ -19,18 +19,20 @@ export default function Header({ drawSearchbar }: Props): ReactElement {
         }
     }
 
+    console.log(menuItemsRef.current);
+
     return (
         <nav className={`w-full bg-white shadow dark:bg-gray-800 border border-gray-200 dark:border-gray-500`}>
-            <div className="container px-6 py-3 mx-auto md:flex md:justify-between">
-                <div className="flex items-center justify-between w-full">
-                    <div className='md:w-full'>
+            <div className={`container px-6 py-3 mx-auto md:flex justify-between`}>
+                <div className={`flex items-center ${!drawSearchbar ? 'justify-center' : 'justify-between'} w-full`}>
+                    <div className={`md:w-full ${!drawSearchbar ? 'text-center' : ''}`}>
                         <Link href="/">
                             <a className="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300" href="#">Covid19 Tracker</a>
                         </Link>
                     </div>
 
                     {/* <!-- Mobile menu button --> */}
-                    <div className="flex md:hidden">
+                    <div className={`flex md:hidden ${!drawSearchbar ? 'hidden' : ''}`}>
                         <button type="button" className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu" onClick={showMenuItemsMobile}>
                             <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
                                 <path fillRule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
@@ -68,6 +70,6 @@ export default function Header({ drawSearchbar }: Props): ReactElement {
                 }
 
             </div>
-        </nav>
+        </nav >
     )
 }
