@@ -9,8 +9,8 @@ module.exports = {
         '135': '135deg'
       },
       animation: {
-        'slideUp': 'slideUp .5s linear forwards',
-        'slideDown': 'slideDown .5s linear forwards'
+        'slideUp': 'slideUp .3s linear forwards',
+        'slideDown': 'slideDown .3s linear forwards'
       },
       keyframes: {
         slideUp: {
