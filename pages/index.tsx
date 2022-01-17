@@ -1,12 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Dataset from '../components/Dataset'
 import { CountryCovidData } from '../interfaces/CountryCovidData'
 import { CovidData } from '../interfaces/CovidData';
 import CountryCard from '../components/CountryCard'
-import Link from 'next/link'
+import Header from '../components/Header'
+import CountryCardContainer from '../components/CountryCardContainer';
+import SearchProvider, { useSearch } from '../context/useSearch'
 
 interface Props {
   allData: CountryCovidData[]
@@ -36,13 +35,11 @@ const Home: NextPage<Props> = ({ allData }: Props) => {
       <Head>
         <title>Covid 19 Tracker</title>
       </Head>
-      <div className='bg-white dark:bg-gray-800 container mx-auto my-10'>
-        <div className="flex flex-wrap w-full mx-auto gap-6 items-center justify-center">
-          {allData.map((dataByCountry, idx) => (
-            <CountryCard key={idx} name={dataByCountry.country} urlData={dataByCountry.moreData} />
-          ))}
-        </div>
-      </div>
+
+      <SearchProvider>
+        <Header drawSearchbar={true} />
+        <CountryCardContainer allData={allData} />
+      </SearchProvider>
     </>
   )
 }

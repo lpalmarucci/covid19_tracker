@@ -8,7 +8,6 @@ import Footer from '../components/Footer'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
-      <Header />
       <Component {...pageProps} />
       <Footer />
     </ThemeProvider>

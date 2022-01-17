@@ -5,6 +5,7 @@ import { CovidData } from '../../interfaces/CovidData'
 import { CountryCovidData } from '../../interfaces/CountryCovidData'
 import { ParsedUrlQuery } from 'querystring'
 import { ModalProvider } from '../../context/useModal'
+import Header from '../../components/Header'
 
 interface Props {
     data: CovidData,
@@ -67,6 +68,7 @@ const Home: NextPage<Props> = ({ data, countryName }: Props) => {
             <Head>
                 <title>{countryName}&apos;s Covid Data</title>
             </Head>
+            <Header />
             <ModalProvider>
                 <Dataset data={data} countryName={countryName} />
             </ModalProvider>

@@ -1,14 +1,16 @@
 import React, { ReactElement } from 'react'
 import Link from 'next/link'
+import { useSearch } from '../context/useSearch';
 
 interface Props {
-
+    drawSearchbar?: boolean
 }
 
-export default function Header({ }: Props): ReactElement {
+export default function Header({ drawSearchbar }: Props): ReactElement {
 
-    const [queryString, setQueryString] = React.useState<string>("");
     const menuItemsRef = React.useRef<HTMLDivElement>(null);
+
+    const { q: queryString, setQueryString } = useSearch();
 
 
     const showMenuItemsMobile = (): void => {
@@ -38,7 +40,7 @@ export default function Header({ }: Props): ReactElement {
                 </div>
 
                 {/* <!-- Mobile Menu open: "block", Menu closed: "hidden" --> */}
-                <div className={`w-full text-center md:flex md:items-center md:justify-end hidden`} ref={menuItemsRef}>
+                {drawSearchbar && <div className={`w-full text-center md:flex md:items-center md:justify-end hidden`} ref={menuItemsRef}>
                     {/* <div className="flex flex-row justify-evenly px-2 py-3 -mx-4 md:mx-0 md:py-0 my-2 gap-y-3">
                         <a href="#" className="px-2 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2 focus:bg-gray-900 focus:text-gray-100">Home</a>
                         <a href="#" className="px-2 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2 focus:bg-gray-900 focus:text-gray-100">About</a>
@@ -63,6 +65,8 @@ export default function Header({ }: Props): ReactElement {
                         />
                     </div>
                 </div>
+                }
+
             </div>
         </nav>
     )

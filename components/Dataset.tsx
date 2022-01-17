@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react'
 import { CovidData } from '../interfaces/CovidData'
 import CardContainer from './CardContainer'
-import Footer from './Footer';
 
 interface Props {
     data: CovidData,
