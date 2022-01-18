@@ -1,8 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { CountryCovidData } from '../interfaces/CountryCovidData'
-import { CovidData } from '../interfaces/CovidData';
-import CountryCard from '../components/CountryCard'
 import Header from '../components/Header'
 import CountryCardContainer from '../components/CountryCardContainer';
 import SearchProvider, { useSearch } from '../context/useSearch'
