@@ -18,7 +18,7 @@ export default function CountryCardContainer({ allData }: Props): ReactElement {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 w-full min-h-max py-10 h-full min-h-[734px]">
+    <div className="bg-white dark:bg-gray-800 w-full py-10 h-full min-h-[734px]">
       <div className="flex flex-wrap w-full h-full min-h-full container mx-auto gap-6 items-center justify-center dark:bg-gray-800">
         {data.length === 0 ? (
           <span className="text-gray-700 dark:text-white text-3xl font-semibold text-center px-4">
