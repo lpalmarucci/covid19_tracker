@@ -1,28 +1,39 @@
-import React, { ReactElement } from 'react'
-import { CountryCovidData } from '../interfaces/CountryCovidData'
-import CountryCard from './CountryCard'
-import { useSearch } from '../context/useSearch';
+import React, { ReactElement } from "react";
+import { CountryCovidData } from "../interfaces/CountryCovidData";
+import CountryCard from "./CountryCard";
+import { useSearch } from "../context/useSearch";
 
 interface Props {
-    allData: Array<CountryCovidData>
+  allData: Array<CountryCovidData>;
 }
 
 export default function CountryCardContainer({ allData }: Props): ReactElement {
+  const { q: queryString } = useSearch();
+  let data = allData.slice();
 
-    const { q: queryString } = useSearch();
-    let data = allData.slice();
+  if (queryString !== "") {
+    data = data.filter((country) =>
+      country.country.toLowerCase().includes(queryString.toLowerCase())
+    );
+  }
 
-    if (queryString !== "") {
-        data = data.filter((country) => country.country.toLowerCase().includes(queryString.toLowerCase()))
-    }
-
-    return (
-        <div className='bg-white dark:bg-gray-800 container mx-auto my-10'>
-            <div className="flex flex-wrap w-full mx-auto gap-6 items-center justify-center">
-                {data.map((dataByCountry, idx) => (
-                    <CountryCard key={idx} name={dataByCountry.country} urlData={dataByCountry.moreData} />
-                ))}
-            </div>
-        </div>
-    )
+  return (
+    <div className="bg-white dark:bg-gray-800 w-full min-h-max py-10 h-full min-h-[734px]">
+      <div className="flex flex-wrap w-full h-full min-h-full container mx-auto gap-6 items-center justify-center dark:bg-gray-800">
+        {data.length === 0 ? (
+          <span className="text-gray-700 dark:text-white text-3xl font-semibold text-center px-4">
+            Nessuna nazione inizia con &quot;{queryString}&quot;
+          </span>
+        ) : (
+          data.map((dataByCountry, idx) => (
+            <CountryCard
+              key={idx}
+              name={dataByCountry.country}
+              urlData={dataByCountry.moreData}
+            />
+          ))
+        )}
+      </div>
+    </div>
+  );
 }

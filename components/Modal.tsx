@@ -18,12 +18,12 @@ export default function Modal({}: Props): ReactElement {
 
   React.useEffect(() => {
     if (isOpen) {
-      document.querySelector("#__next")?.classList.add("opacity-20");
+      document.querySelector("#__next")?.classList.add("opacity-50");
     } else {
-      document.querySelector("#__next")?.classList.remove("opacity-20");
+      document.querySelector("#__next")?.classList.remove("opacity-50");
     }
     return () =>
-      document.querySelector("#__next")?.classList.remove("opacity-20");
+      document.querySelector("#__next")?.classList.remove("opacity-50");
   }, [isOpen]);
 
   React.useEffect(() => {
@@ -47,11 +47,10 @@ export default function Modal({}: Props): ReactElement {
   return (
     <div
       id="modal"
-      className="fixed top-2/4 left-2/4 h-auto w-3/4 sm:w-3/4 lg:max-w-fit  border-gray-1 rounded-xl bg-gray-100 sm:p-5 text-center text-xl duration-500 animate-slideUp"
+      className="fixed top-2/4 left-2/4 h-auto w-3/4 sm:w-3/4 lg:max-w-fit  border-gray-1 rounded-xl bg-gray-100 dark:bg-gray-700 sm:p-5 text-center text-xl duration-500 animate-slideUp dark:text-white"
     >
       <div className="m-2 sm:m-10">
         <h2 className="font-bold pt-8 text-3xl sm:text-5xl">
-          {" "}
           {data.region || data.name}
         </h2>
         <div className="flex flex-row flex-wrap max-w-3xl justify-center items-center gap-5 sm:gap-10 py-16">
@@ -62,8 +61,10 @@ export default function Modal({}: Props): ReactElement {
                 key={idx}
                 className="flex flex-col w-36 gap-2 justify-center text-center"
               >
-                <b className="uppercase text-xl md:text-3xl">{field}</b>
-                <span className="md:text-2xl text-xl">{value}</span>
+                <b className="uppercase text-xl md:text-3xl font-normal">
+                  {field}
+                </b>
+                <span className="md:text-2xl text-xl font-thin">{value}</span>
               </div>
             );
           })}

@@ -1,33 +1,34 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { CountryCovidData } from '../interfaces/CountryCovidData'
-import Header from '../components/Header'
-import CountryCardContainer from '../components/CountryCardContainer';
-import SearchProvider, { useSearch } from '../context/useSearch'
+import type { NextPage } from "next";
+import Head from "next/head";
+import { CountryCovidData } from "../interfaces/CountryCovidData";
+import Header from "../components/Header";
+import CountryCardContainer from "../components/CountryCardContainer";
+import SearchProvider, { useSearch } from "../context/useSearch";
 
 interface Props {
-  allData: CountryCovidData[]
+  allData: CountryCovidData[];
 }
 
 export async function getServerSideProps<GetServerSideProps>() {
-  const data = await fetch('https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true');
+  const data = await fetch(
+    "https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true"
+  );
   const res: CountryCovidData | CountryCovidData[] | any = await data.json();
 
   if (res.error) {
     return {
-      notFound: true
-    }
+      notFound: true,
+    };
   }
 
   return {
     props: {
-      allData: res
-    }
-  }
+      allData: res,
+    },
+  };
 }
 
 const Home: NextPage<Props> = ({ allData }: Props) => {
-
   return (
     <>
       <Head>
@@ -39,7 +40,7 @@ const Home: NextPage<Props> = ({ allData }: Props) => {
         <CountryCardContainer allData={allData} />
       </SearchProvider>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
