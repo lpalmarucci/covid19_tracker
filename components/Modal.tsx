@@ -47,10 +47,10 @@ export default function Modal({}: Props): ReactElement {
   return (
     <div
       id="modal"
-      className="fixed top-2/4 left-2/4 h-auto w-3/4 sm:w-3/4 lg:max-w-fit  border-gray-1 rounded-xl bg-gray-100 p-5 text-center text-xl duration-500 animate-slideUp"
+      className="fixed top-2/4 left-2/4 h-auto w-3/4 sm:w-3/4 lg:max-w-fit  border-gray-1 rounded-xl bg-gray-100 sm:p-5 text-center text-xl duration-500 animate-slideUp"
     >
-      <div className="m-10">
-        <h2 className="font-bold text-3xl sm:text-5xl">
+      <div className="m-2 sm:m-10">
+        <h2 className="font-bold pt-8 text-3xl sm:text-5xl">
           {" "}
           {data.region || data.name}
         </h2>
