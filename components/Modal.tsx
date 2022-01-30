@@ -47,24 +47,26 @@ export default function Modal({}: Props): ReactElement {
   return (
     <div
       id="modal"
-      className="fixed top-2/4 left-2/4 h-auto w-3/4 sm:w-3/4 lg:max-w-fit  border-gray-1 rounded-xl bg-gray-100 dark:bg-gray-700 sm:p-5 text-center text-xl duration-500 animate-slideUp dark:text-white"
+      className="fixed top-2/4 left-2/4 h-auto w-3/4 sm:w-3/ lg:w-2/4 border-gray-1 rounded-xl bg-gray-100 dark:bg-gray-700 sm:p-5 text-center text-xl duration-500 animate-slideUp dark:text-white"
     >
       <div className="m-2 sm:m-10">
         <h2 className="font-bold pt-8 text-3xl sm:text-5xl">
           {data.region || data.name}
         </h2>
-        <div className="flex flex-row flex-wrap max-w-3xl justify-center items-center gap-5 sm:gap-10 py-16">
+        <div className="flex flex-col lg:flex-row flex-wrap max-w-3xl mx-auto justify-evenly items-center gap-10 lg:gap-5 py-16">
           {Object.entries(data).map(([field, value], idx) => {
             if (keyToSkip.find((key) => key === field)) return;
             return (
               <div
                 key={idx}
-                className="flex flex-col w-36 gap-2 justify-center text-center"
+                className="grid grid-cols-1 w-36 gap-5 justify-center text-center break-words min-w-max"
               >
-                <b className="uppercase text-xl md:text-3xl font-normal">
+                <b className="uppercase text-xl md:text-3xl font-normal text-center md:h-11">
                   {field}
                 </b>
-                <span className="md:text-2xl text-xl font-thin">{value}</span>
+                <span className="md:text-2xl text-xl font-thin text-center">
+                  {value}
+                </span>
               </div>
             );
           })}
