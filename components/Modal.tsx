@@ -53,7 +53,7 @@ export default function Modal({}: Props): ReactElement {
         <h2 className="font-bold pt-8 text-3xl sm:text-5xl">
           {data.region || data.name}
         </h2>
-        <div className="flex flex-col lg:flex-row flex-wrap max-w-3xl mx-auto justify-evenly items-center gap-10 lg:gap-5 py-16">
+        <div className="flex flex-col lg:flex-row flex-wrap max-w-3xl mx-auto justify-evenly items-center gap-5 lg:gap-10 py-16">
           {Object.entries(data).map(([field, value], idx) => {
             if (keyToSkip.find((key) => key === field)) return;
             return (
