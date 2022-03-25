@@ -19,9 +19,11 @@ export default function Header({ drawSearchbar }: Props): ReactElement {
 
   return (
     <nav
-      className={`w-full bg-white shadow dark:bg-gray-800 border-b-2  border-b-gray-200 dark:border-gray-500`}
+      className={`w-full bg-white shadow-md rounded-md  dark:bg-gray-800 dark:border-gray-500`}
     >
-      <div className={`container px-6 py-3 mx-auto md:flex justify-between`}>
+      <div
+        className={`container px-6 py-3 mx-auto md:flex justify-between h-16`}
+      >
         <div
           className={`flex items-center ${
             !drawSearchbar ? "justify-center" : "justify-between"
@@ -68,7 +70,7 @@ export default function Header({ drawSearchbar }: Props): ReactElement {
                         <a href="#" className="px-2 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2 focus:bg-gray-900 focus:text-gray-100">Contact</a>
                     </div> */}
 
-            <div className="relative my-3 md:w-full xl:w-3/4">
+            <div className="relative my-2 md:w-full xl:w-2/4">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                 <svg
                   className="w-5 h-5 text-gray-400"
@@ -87,7 +89,7 @@ export default function Header({ drawSearchbar }: Props): ReactElement {
 
               <input
                 type="text"
-                className="w-full py-3 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                className="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                 placeholder="Search for a country"
                 value={queryString}
                 onChange={(e) => setQueryString(e.target.value)}
