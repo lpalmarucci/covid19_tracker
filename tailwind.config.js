@@ -3,6 +3,11 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: false,
+  variants: {
+    extend: {},
+  },
+  plugins: [],
   theme: {
     extend: {
       rotate: {
