@@ -11,7 +11,7 @@ interface Props {
 
 export async function getServerSideProps<GetServerSideProps>() {
   const data = await fetch(
-    "https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true"
+    process.env.NEXT_PUBLIC_BASE_API_URL || ''
   );
   const res: CountryCovidData | CountryCovidData[] | any = await data.json();
 
