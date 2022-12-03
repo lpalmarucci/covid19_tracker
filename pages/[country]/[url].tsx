@@ -18,8 +18,7 @@ interface CountryParams {
 }
 
 export async function getStaticPaths<getStaticPaths>() {
-
-    const data: Response = await fetch('https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true');
+    const data: Response = await fetch(process.env.NEXT_PUBLIC_BASE_API_URL || '');
     const res: CountryCovidData | CountryCovidData[] | any = await data.json();
 
     if (res.error) {
