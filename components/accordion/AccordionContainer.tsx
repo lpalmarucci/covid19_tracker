@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { AccordionProvider } from '../../context/useAccordion'
+import { AccordionProvider } from '../../context/accordion.context'
 import InfectedByRegion from '../InfectedByRegion'
 import Accordion from './Accordion'
 import { CovidDataByRegion } from '../../interfaces/CovidDataByRegion'

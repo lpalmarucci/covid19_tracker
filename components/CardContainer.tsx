@@ -4,7 +4,7 @@ import Card from './IndicatorCard'
 import { CovidData } from '../interfaces/CovidData';
 import AccordionContainer from './accordion/AccordionContainer';
 import Modal from '../components/Modal'
-import { ModalProvider, useModal } from '../context/useModal';
+import { ModalProvider, useModal } from '../context/modal.context';
 import Portal from './Portal';
 
 
@@ -50,21 +50,30 @@ export default function CardContainer({ data }: Props): ReactElement {
         }
     });
 
+    const someDataToDisplay = React.useMemo(() => keysToObserve.some((key) => Object.keys(key)[0] in data), [data]);
+
     return (
         <div>
-            <article className="flex gap-6 justify-center flex-wrap lg:flex-nowrap my-20 mt-10 mx-auto w-full p-10 dark:bg-gray-800 dark:text-white text-center md:grid md:grid-cols-2">
-                {keysToObserve.map((field: any, idx: number) => {
-                    // TODO Sistemare questa merda
-                    const key: string = Object.keys(field)[0];
-                    if (key in data && data[key]) return <Card key={idx} title={field[key]} value={data[key]} />
-                })}
-            </article>
+            {
+                someDataToDisplay ?
+                <article className="flex gap-6 justify-center flex-wrap lg:flex-nowrap my-20 mt-10 mx-auto w-full p-10 dark:bg-gray-800 dark:text-white text-center md:grid md:grid-cols-2">
+                    {
+                        keysToObserve.map((field: any, idx: number) => {
+                            const key: string = Object.keys(field)[0];
+                            if (key in data && data[key]) return <Card key={idx} title={field[key]} value={data[key]} />
+                        })
+                    }
+                </article> :
+                <h1 className="text-center md:text-5xl font-bold pt-24 text-black dark:text-white">Nessun dato da mostrare</h1>
+            }
             {keyToShowPerRegion != "" && <AccordionContainer dataByRegion={data[keyToShowPerRegion]} />}
 
-            {isModalOpen &&
+            {
+                isModalOpen &&
                 <Portal>
                     <Modal />
-                </Portal>}
+                </Portal>
+            }
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import Link from "next/link";
-import { useSearch } from "../context/useSearch";
+import { useSearch } from "../context/search.context";
 
 interface Props {
   drawSearchbar?: boolean;

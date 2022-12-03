@@ -1,5 +1,5 @@
 import React, { Dispatch, ReactElement } from "react";
-import { useAccordion } from "../../context/useAccordion";
+import { useAccordion } from "../../context/accordion.context";
 
 interface Props {
   handleClick: () => void;

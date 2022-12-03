@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { useModal } from "../context/useModal";
+import { useModal } from "../context/modal.context";
 import { CovidDataByRegion } from "../interfaces/CovidDataByRegion";
 
 interface Props {}
