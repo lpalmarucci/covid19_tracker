@@ -35,9 +35,9 @@ const regionKeys: object[] = [
 ]
 
 export interface Props {
-
     data: CovidData | any
 }
+
 export default function CardContainer({ data }: Props): ReactElement {
 
     const { isOpen: isModalOpen } = useModal();
@@ -54,6 +54,7 @@ export default function CardContainer({ data }: Props): ReactElement {
         <div>
             <article className="flex gap-6 justify-center flex-wrap lg:flex-nowrap my-20 mt-10 mx-auto w-full p-10 dark:bg-gray-800 dark:text-white text-center md:grid md:grid-cols-2">
                 {keysToObserve.map((field: any, idx: number) => {
+                    // TODO Sistemare questa merda
                     const key: string = Object.keys(field)[0];
                     if (key in data && data[key]) return <Card key={idx} title={field[key]} value={data[key]} />
                 })}

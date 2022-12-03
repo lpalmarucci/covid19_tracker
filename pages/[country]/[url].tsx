@@ -38,8 +38,6 @@ export async function getStaticPaths<getStaticPaths>() {
     }
 }
 
-
-
 export async function getStaticProps<GetStaticProps>({ params }: ParsedUrlQuery) {
     const { country, url }: any = params;
     const data: Response = await fetch(`https://api.apify.com/v2/key-value-stores/${url}/records/LATEST?disableRedirect=true`);

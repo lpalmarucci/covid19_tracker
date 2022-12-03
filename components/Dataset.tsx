@@ -8,11 +8,9 @@ interface Props {
 }
 
 export default function Dataset({ data, countryName }: Props): ReactElement {
-  const notFormattedDate: string | any =
-    data?.lastUpdatedAtSource || data?.lastUpdatedAtApify;
+  const notFormattedDate: string | any = data?.lastUpdatedAtSource || data?.lastUpdatedAtApify;
   const date = new Date(notFormattedDate);
-  const formattedDate =
-    date.toLocaleDateString() + " " + date.toLocaleTimeString();
+  const formattedDate = date.toLocaleDateString() + " " + date.toLocaleTimeString();
 
   return (
     <div className="w-full h-full min-h-[1000px]">

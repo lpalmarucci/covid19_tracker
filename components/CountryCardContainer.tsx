@@ -22,7 +22,7 @@ export default function CountryCardContainer({ allData }: Props): ReactElement {
       <div className="flex flex-wrap w-full h-full min-h-full container mx-auto gap-6 items-center justify-center dark:bg-gray-800">
         {data.length === 0 ? (
           <span className="text-gray-700 dark:text-white text-3xl font-semibold text-center px-4">
-            Nessuna nazione inizia con &quot;{queryString}&quot;
+            Nessuna occorrenza per &quot;{queryString}&quot;
           </span>
         ) : (
           data.map((dataByCountry, idx) => (

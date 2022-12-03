@@ -9,8 +9,7 @@ interface Props {
 export default function Accordion({ children }: Props): ReactElement {
   const { setIsOpen }: any = useAccordion();
 
-  const accordionContainerRef: React.RefObject<HTMLDivElement> =
-    React.createRef();
+  const accordionContainerRef: React.RefObject<HTMLDivElement> = React.createRef();
 
   const openCloseAccordion = (): void => {
     if (accordionContainerRef.current) {

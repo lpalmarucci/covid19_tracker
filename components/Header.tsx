@@ -7,19 +7,18 @@ interface Props {
 }
 
 export default function Header({ drawSearchbar }: Props): ReactElement {
-  const menuItemsRef = React.useRef<HTMLDivElement>(null);
-
+  const searchbarRef = React.useRef<HTMLDivElement>(null);
   const { q: queryString, setQueryString } = useSearch();
 
   const showMenuItemsMobile = (): void => {
-    if (menuItemsRef.current) {
-      menuItemsRef.current.classList.toggle("hidden");
+    if (searchbarRef.current) {
+      searchbarRef.current.classList.toggle("hidden");
     }
   };
 
   return (
     <nav
-      className={`w-full bg-white shadow-md rounded-md  dark:bg-gray-800 dark:border-gray-500`}
+      className={`w-full bg-white shadow-md dark:bg-gray-800 dark:border-gray-500`}
     >
       <div
         className={`container px-6 py-3 mx-auto md:flex justify-between h-16`}
@@ -32,7 +31,7 @@ export default function Header({ drawSearchbar }: Props): ReactElement {
           <div className={`md:w-full ${!drawSearchbar ? "text-center" : ""}`}>
             <Link href="/">
               <a
-                className="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
+                className="text-2xl font-bold text-gray-800 duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
                 href="#"
               >
                 Covid19 Tracker
@@ -62,7 +61,7 @@ export default function Header({ drawSearchbar }: Props): ReactElement {
         {drawSearchbar && (
           <div
             className={`w-full text-center md:flex md:items-center md:justify-end hidden`}
-            ref={menuItemsRef}
+            ref={searchbarRef}
           >
             {/* <div className="flex flex-row justify-evenly px-2 py-3 -mx-4 md:mx-0 md:py-0 my-2 gap-y-3">
                         <a href="#" className="px-2 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2 focus:bg-gray-900 focus:text-gray-100">Home</a>
@@ -72,18 +71,18 @@ export default function Header({ drawSearchbar }: Props): ReactElement {
 
             <div className="relative my-2 md:w-full xl:w-2/4">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                <svg
-                  className="w-5 h-5 text-gray-400"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
+                  <svg
+                      className="w-5 h-5 text-gray-400"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                  >
+                    <path
+                        d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    ></path>
                 </svg>
               </span>
 

@@ -3,8 +3,8 @@
   "homepage": "https://lpalmarucci.github.io/covid19-tracker/",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "NODE_ENV=development next dev",
+    "build": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint",
     "predploy": "next build",
