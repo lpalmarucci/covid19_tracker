@@ -4,7 +4,7 @@ import Dataset from '../../components/Dataset'
 import { CovidData } from '../../interfaces/CovidData'
 import { CountryCovidData } from '../../interfaces/CountryCovidData'
 import { ParsedUrlQuery } from 'querystring'
-import { ModalProvider } from '../../context/useModal'
+import { ModalProvider } from '../../context/modal.context'
 import Header from '../../components/Header'
 
 interface Props {

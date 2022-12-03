@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { CountryCovidData } from "../interfaces/CountryCovidData";
 import CountryCard from "./CountryCard";
-import { useSearch } from "../context/useSearch";
+import { useSearch } from "../context/search.context";
 
 interface Props {
   allData: Array<CountryCovidData>;

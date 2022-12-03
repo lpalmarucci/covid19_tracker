@@ -1,5 +1,5 @@
 import React, { JSXElementConstructor, ReactElement, ReactNode } from "react";
-import { useAccordion } from "../../context/useAccordion";
+import {useAccordion} from "../../context/accordion.context";
 import AccordionHeader from "./AccordionHeader";
 
 interface Props {

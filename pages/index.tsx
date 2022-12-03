@@ -3,7 +3,7 @@ import Head from "next/head";
 import { CountryCovidData } from "../interfaces/CountryCovidData";
 import Header from "../components/Header";
 import CountryCardContainer from "../components/CountryCardContainer";
-import SearchProvider, { useSearch } from "../context/useSearch";
+import SearchProvider, { useSearch } from "../context/search.context";
 
 interface Props {
   allData: CountryCovidData[];

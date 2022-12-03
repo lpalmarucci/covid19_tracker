@@ -4,7 +4,7 @@ import Card from './IndicatorCard'
 import { CovidData } from '../interfaces/CovidData';
 import AccordionContainer from './accordion/AccordionContainer';
 import Modal from '../components/Modal'
-import { ModalProvider, useModal } from '../context/useModal';
+import { ModalProvider, useModal } from '../context/modal.context';
 import Portal from './Portal';
 
 
