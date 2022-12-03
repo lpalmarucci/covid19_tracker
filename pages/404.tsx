@@ -11,7 +11,7 @@ export default function Custom404() {
             The resource you&apos;re trying to retrieve doesn&apos;t exists
           </h1>
           <h3 className="text-lg text-center m-10">
-            Return to{" "}
+            Return to&nbsp;
             <Link href="/" passHref>
               <a className="transition-all hover:underline hover:font-bold">
                 Home
